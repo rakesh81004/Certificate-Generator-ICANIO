@@ -1,0 +1,100 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #000;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.certificate-box {
+  position: relative;
+  width: 700px;
+  height: 700px;
+  border-radius: 0px;
+  overflow: hidden;
+  background-image: 
+    linear-gradient(rgba(0, 26, 121, 0.6), rgba(0, 16, 93, 0.6)),  /* deep navy */
+    linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),     /* black */
+    url('Background-fotor-20250716113917.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+}
+
+
+.overlay {
+  padding: 40px 30px 50px;
+  text-align: center;
+}
+
+.icanio-logo-box {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 1px 40px;
+  z-index: 10;
+  text-align: center;
+}
+
+.icanio-logo {
+  height: 50px;
+}
+
+/* Centered College Logo */
+.college-logo {
+  display: block;
+  margin: 60px auto 20px auto;
+  height: 130px;
+}
+
+.title {
+  font-size: 2.7rem;
+  font-weight: bold;
+  color: white;
+  margin-bottom: 5px;
+}
+
+.subtitle {
+  font-size: 1.1rem;
+  color: #ccc;
+  margin-bottom: 5px;
+}
+
+.college-name {
+  font-size: 1.9rem;
+  font-weight: 600;
+  color: white;
+  margin-bottom: 0px;
+}
+
+.highlight {
+  font-size: 3.5rem;
+  font-weight: bold;
+  color: #00bfff;
+  margin-top: 1px;
+  margin-bottom: 10px;
+}
+
+.description {
+  font-size: 1rem;
+  color: #ddd;
+  line-height: 1.6;
+}
+
+.quote {
+  margin-top: 70px;
+  font-style: italic;
+  color: #aaa;
+  font-size: 0.95rem;
+}

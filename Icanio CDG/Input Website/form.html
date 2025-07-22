@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Certificate Generator Form</title>
+  <link rel="stylesheet" href="form.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&display=swap" rel="stylesheet">
+  <style>
+    .logo-preview {
+      margin-top: 15px;
+      text-align: center;
+    }
+
+    .logo-preview img {
+      max-width: 160px;
+      max-height: 160px;
+      display: none;
+      border: 2px solid #ccc;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="form-wrapper">
+  <img src="../Icanio Headers/Icanio_technologies_logo.png" alt="ICANIO Logo" class="icanio-logo">
+
+  <form id="certificateForm">
+    <h2>Certificate Details</h2>
+
+    <!-- ICANIO Header -->
+    <label for="icanioLogo">Choose ICANIO Header:</label>
+    <select id="icanioLogo" name="icanioLogo" required>
+      <option value="">-- Select --</option>
+      <option value="Icanio_technologies_logo.png">Icanio Technologies</option>
+      <option value="Icanio_tech_school.png">Icanio Tech School</option>
+    </select>
+
+    <!-- College Selection -->
+    <label for="college">Select College:</label>
+    <select id="college" name="college" required>
+      <option value="">-- Select a College --</option>
+        <option value="1">Dr. N.G.P. Arts & Science College – Coimbatore</option>
+        <option value="2">Erode Sengunthar Engineering College – Perundurai (Erode)</option>
+        <option value="3">Francis Xavier Engineering College, Tirunelveli</option>
+        <option value="4">Government College of Engineering, Tirunelveli</option>
+        <option value="5">Grace College of Engineering, Thoothukudi</option>
+        <option value="6">Jai Shriram Engineering College – Tiruppur</option>
+        <option value="7">Jayaram College of Engineering and Technology, Trichy</option>
+        <option value="8">JP College Of Engineering</option>
+        <option value="9">K.S. Rangasamy College of Technology (KSM) – Tiruchengode</option>
+        <option value="10">Kalaignar Karunanidhi Institute of Technology, Coimbatore</option>
+        <option value="11">Kamaraj College of Engineering & Technology – Virudhunagar</option>
+        <option value="12">Kangeyam Institute of Commerce – Kangeyam, Tiruppur district</option>
+        <option value="13">Karpagam Institute of Technology – Coimbatore</option>
+        <option value="14">Kongu Engineering College – Perundurai, Erode District</option>
+        <option value="15">Kumarasamy College of Engineering – Karur</option>
+        <option value="16">National Engineering College (NEC) – Kovilpatti</option>
+        <option value="17">PSN College of Engineering and Technology, Melathediyoor</option>
+        <option value="18">Ramco Institute of Technology – Rajapalayam</option>
+        <option value="19">Sengunthar Engineering College, Tiruchengode</option>
+        <option value="20">SNS College of Technology (SNSCT) – Coimbatore</option>
+        <option value="21">Sree Ramu College of Engineering & Technology (SRET) – Pollachi</option>
+        <option value="22">Velalar College of Engineering & Technology – Erode</option>
+        <option value="23">Xavier Institute of Business Administration (XIBA) – Palayamkottai</option>
+        <option value="no-college">-- Not in List / No College --</option>
+    </select>
+
+    <!-- Logo preview -->
+    <div class="logo-preview">
+      <img id="collegeLogo" alt="College Logo">
+    </div>
+
+    <!-- Custom college input -->
+    <div id="customCollegeFields" style="display: none;">
+      <label for="customCollegeName">Enter College Name:</label>
+      <input type="text" id="customCollegeName" name="customCollegeName">
+
+      <label for="customCollegeLogo">Upload College Logo:</label>
+      <input type="file" id="customCollegeLogo" name="customCollegeLogo" accept="image/*">
+    </div>
+
+    <!-- Student Count -->
+    <label for="studentCount">Number of Students:</label>
+    <input type="number" id="studentCount" name="studentCount" class="input-box" placeholder="Enter count" required>
+
+    <!-- Description -->
+    <label for="description">Enter Description:</label>
+    <textarea id="description" name="description" rows="4" class="input-box" placeholder="Full sentence here..." required></textarea>
+
+    <!-- Quote -->
+    <label for="quote">Enter Quote:</label>
+    <input type="text" id="quote" name="quote" class="input-box" placeholder="Enter quote..." required>
+
+    <!-- Background Image -->
+    <label for="bgImage">Upload Background Image:</label>
+    <input type="file" id="bgImage" name="bgImage" class="input-box" accept="image/*" required>
+
+    <button type="submit" class="submit-button">Generate Certificate</button>
+  </form>
+</div>
+
+<script>
+  const collegeMap = {
+  "1": "Dr. N.G.P. Arts & Science College – Coimbatore",
+  "2": "Erode Sengunthar Engineering College – Perundurai (Erode)",
+  "3": "Francis Xavier Engineering College, Tirunelveli",
+  "4": "Government College of Engineering, Tirunelveli",
+  "5": "Grace College of Engineering, Thoothukudi",
+  "6": "Jai Shriram Engineering College – Tiruppur",
+  "7": "Jayaram College of Engineering and Technology, Trichy",
+  "8": "JP College Of Engineering",
+  "9": "K.S. Rangasamy College of Technology (KSM) – Tiruchengode",
+  "10": "Kalaignar Karunanidhi Institute of Technology, Coimbatore",
+  "11": "Kamaraj College of Engineering & Technology – Virudhunagar",
+  "12": "Kangeyam Institute of Commerce – Kangeyam, Tiruppur district",
+  "13": "Karpagam Institute of Technology – Coimbatore",
+  "14": "Kongu Engineering College – Perundurai, Erode District",
+  "15": "Kumarasamy College of Engineering – Karur",
+  "16": "National Engineering College (NEC) – Kovilpatti",
+  "17": "PSN College of Engineering and Technology, Melathediyoor",
+  "18": "Ramco Institute of Technology – Rajapalayam",
+  "19": "Sengunthar Engineering College, Tiruchengode",
+  "20": "SNS College of Technology (SNSCT) – Coimbatore",
+  "21": "Sree Ramu College of Engineering & Technology (SRET) – Pollachi",
+  "22": "Velalar College of Engineering & Technology – Erode",
+  "23": "Xavier Institute of Business Administration (XIBA) – Palayamkottai"
+};
+
+
+  const collegeSelect = document.getElementById('college');
+  const logoImg = document.getElementById('collegeLogo');
+  const customFields = document.getElementById('customCollegeFields');
+
+  collegeSelect.addEventListener('change', () => {
+    const selected = collegeSelect.value;
+
+    if (selected === 'no-college') {
+      customFields.style.display = 'block';
+      logoImg.style.display = 'none';
+    } else {
+      customFields.style.display = 'none';
+
+      // Set college logo based on serial number
+      logoImg.src = `../College_Logos/${selected}.png`;
+      logoImg.style.display = 'block';
+     logoImg.style.margin = '0 auto'; 
+    }
+  });
+
+  document.getElementById("certificateForm").addEventListener("submit", async function (e) {
+    e.preventDefault();
+
+    const form = e.target;
+    const college = form.college.value;
+    const studentCount = form.studentCount.value;
+    const description = form.description.value;
+    const quote = form.quote.value;
+    const icanioHeader = form.icanioLogo.value;
+
+    let collegeName = collegeMap[college] || "";
+    let collegeLogo = "";
+    let bgImageBase64 = "";
+
+    const bgImageFile = form.bgImage.files[0];
+
+    const fileToBase64 = (file) => {
+      return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = () => resolve(encodeURIComponent(reader.result));
+        reader.onerror = reject;
+        reader.readAsDataURL(file);
+      });
+    };
+
+    if (college === "no-college") {
+      collegeName = form.customCollegeName.value;
+      collegeLogo = await fileToBase64(form.customCollegeLogo.files[0]);
+    } else {
+      let collegeName = collegeSelect.options[collegeSelect.selectedIndex].text;
+      collegeLogo = encodeURIComponent(`../College_Logos/${college}.png`);
+    }
+
+    if (bgImageFile) {
+      bgImageBase64 = await fileToBase64(bgImageFile);
+    }
+
+    const redirectUrl = `../Poster Design/index.html?collegeName=${encodeURIComponent(collegeName)}&collegeLogo=${collegeLogo}&studentCount=${encodeURIComponent(studentCount)}&description=${encodeURIComponent(description)}&quote=${encodeURIComponent(quote)}&icanioHeader=${encodeURIComponent(icanioHeader)}&bgImage=${bgImageBase64}`;
+
+    window.location.href = redirectUrl;
+  });
+</script>
+
+</body>
+</html>

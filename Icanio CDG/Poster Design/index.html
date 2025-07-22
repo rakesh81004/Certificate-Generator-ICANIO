@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Campus Talent Drive Certificate</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="certificate-box">
+    <!-- Small white curved logo box -->
+    <div class="icanio-logo-box">
+      <img id="icanio-logo" src="icanio_tech_school_logo.jpg" alt="ICANIO Logo" class="icanio-logo" />
+    </div>
+
+    <!-- Content area with overlay -->
+    <div class="overlay">
+      <img id="collegeLogo" alt="College Logo" class="college-logo" />
+
+      <h2 class="title">Campus Talent Drive</h2>
+      <p class="subtitle">In Collaboration with</p>
+      <h3 class="college-name" id="collegeNameText">College Name</h3>
+
+      <p class="highlight">
+        <strong><span id="studentCountText">0</span> students</strong>
+      </p>
+
+      <p class="description">
+        Gained practical exposure and insights into industry expectations through the development of 
+        <span id="skill1Text">Skill 1</span>, 
+        <span id="skill2Text">Skill 2</span>, and 
+        <span id="skill3Text">Skill 3</span>—enhancing technical capabilities, analytical thinking, and real-world problem-solving.
+      </p>
+
+      <blockquote class="quote">
+        “A step forward in shaping future tech professionals”
+      </blockquote>
+    </div>
+  </div>
+
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+  <script>
+    
+    window.onload = function () {
+    const collegeName = sessionStorage.getItem("collegeName");
+    const collegeLogo = sessionStorage.getItem("collegeLogo");
+    const description = sessionStorage.getItem("description");
+    const quote = sessionStorage.getItem("quote");
+    const icanioHeader = sessionStorage.getItem("icanioHeader");
+
+    // Now you can use these values to populate your certificate
+    document.getElementById("collegeNameField").textContent = collegeName;
+    document.getElementById("descriptionField").textContent = description;
+    document.getElementById("quoteField").textContent = quote;
+    document.getElementById("collegeLogoImg").src = collegeLogo;
+    document.getElementById("icanioLogoImg").src = `Icanio Headers/${icanioHeader}.png`;
+};
+
+    const params = new URLSearchParams(window.location.search);
+
+    const collegeName = params.get("collegeName");
+    const collegeLogo = params.get("collegeLogo");
+    const icanioHeader = params.get("icanioHeader");
+    const description = params.get("description");
+    const studentCount = params.get("studentCount");
+    const quote = params.get("quote");
+    const bgImage = params.get("bgImage");
+
+    // Set College Name
+    if (collegeName) {
+      document.getElementById("collegeNameText").textContent = decodeURIComponent(collegeName);
+    }
+
+    // Set Student Count
+    if (studentCount) {
+      document.getElementById("studentCountText").textContent = decodeURIComponent(studentCount);
+    }
+
+    // Set College Logo
+    if (collegeLogo) {
+      document.getElementById("collegeLogo").src = decodeURIComponent(collegeLogo);
+    }
+
+    // Set Description
+    if (description) {
+      document.querySelector(".description").innerHTML = decodeURIComponent(description);
+    }
+
+    // Set Quote
+    if (quote) {
+      document.querySelector(".quote").textContent = `"${decodeURIComponent(quote)}"`;
+    }
+
+    // Set ICANIO Header
+    if (icanioHeader) {
+      document.getElementById("icanio-logo").src = `../Icanio Headers/${decodeURIComponent(icanioHeader)}`;
+    }
+
+    // Set Background Image with Blue + Black Overlay
+    if (bgImage) {
+      const bgDecoded = decodeURIComponent(bgImage);
+      document.querySelector(".certificate-box").style.backgroundImage = `
+        linear-gradient(rgba(0, 26, 121, 0.4), rgba(0, 26, 121, 0.4)),
+        linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
+        url(${bgDecoded})
+      `;
+      document.querySelector(".certificate-box").style.backgroundSize = "cover";
+      document.querySelector(".certificate-box").style.backgroundPosition = "center";
+    }
+  </script>
+</body>
+</html>
