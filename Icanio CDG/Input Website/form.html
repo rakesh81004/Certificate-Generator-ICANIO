@@ -185,7 +185,7 @@
       bgImageBase64 = await fileToBase64(bgImageFile);
     }
 
-    const redirectUrl = `../Poster Design/index.html?collegeName=${encodeURIComponent(collegeName)}&collegeLogo=${collegeLogo}&studentCount=${encodeURIComponent(studentCount)}&description=${encodeURIComponent(description)}&quote=${encodeURIComponent(quote)}&icanioHeader=${encodeURIComponent(icanioHeader)}&bgImage=${bgImageBase64}`;
+    const redirectUrl = `../Poster Design/posterpage.html?collegeName=${encodeURIComponent(collegeName)}&collegeLogo=${collegeLogo}&studentCount=${encodeURIComponent(studentCount)}&description=${encodeURIComponent(description)}&quote=${encodeURIComponent(quote)}&icanioHeader=${encodeURIComponent(icanioHeader)}&bgImage=${bgImageBase64}`;
 
     window.location.href = redirectUrl;
   });
